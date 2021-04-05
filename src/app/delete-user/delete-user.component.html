@@ -1,0 +1,7 @@
+<form [formGroup]="deleteUserForm" (ngSubmit)="deleteUser()" class="paper">
+    <h1>ajouter utilisateur</h1>
+
+    <p>id</p>
+    <input type="number" formControlName="id" placeholder="ex : xxxxxxxxxxxx" />
+    <button type="submit" class="btn">delete</button>
+</form>

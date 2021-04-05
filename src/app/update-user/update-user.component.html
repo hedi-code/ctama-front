@@ -1,0 +1,20 @@
+<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" class="paper">
+    <h1>ajouter utilisateur</h1>
+
+    <p>first_name</p>
+    <input type="text" formControlName="first_name" placeholder="email@gmail.com" />
+    <p>last_name</p>
+    <input type="text" formControlName="last_name" placeholder="email@gmail.com" />
+    <p>Email</p>
+    <input type="text" formControlName="email" placeholder="email@gmail.com" />
+    <p>Role</p>
+    <select formControlName="role">
+        <option value="admin">admin</option>
+        <option value="user">user</option>
+    </select>
+    <p>Password</p>
+    <input type="password" formControlName="password" placeholder="ex : xxxxxxxxxxxx" />
+    <p>Id</p>
+    <input type="number" formControlName="id" placeholder="id" />
+    <button type="submit" class="btn">add</button>
+</form>

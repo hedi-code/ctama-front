@@ -1,0 +1,63 @@
+.logo {
+    position: absolute;
+    top: 1.5em;
+    left: 1.5em;
+    color: #4875b4;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row-reverse;
+    column-gap: 1em;
+    align-items: center;
+    img {
+        width: 5em;
+        height: 5em;
+    }
+    .writing {
+        line-height: 0.6em;
+        p:nth-child(2) {
+            font-weight: lighter;
+            font-size: 0.8em;
+        }
+    }
+}
+.login {
+    height: 100vh;
+    background: rgb(117, 117, 117);
+    background: url("./../../assets/bg-images/2.png");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    form {
+        width: 22%;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        background: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 10px;
+        padding: 2em;
+        img {
+            width: 5em;
+            margin: 0 auto;
+            margin-bottom: 1em;
+        }
+        button {
+            margin: 0 auto;
+            margin-top: 1.5em;
+            font-size: 0.9em;
+        }
+    }
+}
+h1 {
+    font-size: 2em;
+    padding: 0;
+    margin: 0 auto;
+    color: #4875b4;
+    margin-bottom: 0.5em;
+    text-align: center;
+    span {
+        color: #ec5a31;
+    }
+}
