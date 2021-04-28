@@ -34,10 +34,10 @@ export class LoginComponent implements OnInit {
           console.log(result);
           switch (result.user.role) {
             case "admin":
-              this.router.navigateByUrl("admin");
+              this.router.navigateByUrl("add-user");
               break;
             case "user":
-              this.router.navigateByUrl("user");
+              this.router.navigateByUrl("add-user");
               break;
             default:
               break;
