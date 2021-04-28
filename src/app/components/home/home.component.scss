@@ -1,0 +1,37 @@
+mat-drawer-container {
+    height: 100vh;
+}
+mat-drawer {
+    background-color: rgb(54, 54, 54);
+    color: white;
+    padding: 1.8em;
+    img {
+        margin-left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+li,
+a {
+    padding: 1.2em 0;
+    cursor: pointer;
+}
+nav {
+    display: flex;
+    flex: 1 1;
+    flex-direction: column;
+    align-items: left;
+    height: 100%;
+    img {
+        height: 130px;
+        width: 130px;
+    }
+}
+.example-spacer {
+    flex: 1 1 auto;
+}
+mat-toolbar {
+    height: 8vh !important;
+    background-color: rgb(37, 37, 37) !important;
+    color: white;
+}

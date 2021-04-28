@@ -1,7 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { AuthServiceService } from "../services/auth-service.service";
 import { Router } from "@angular/router";
+import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { TokenStorageServiceService } from 'src/app/services/token-storage-service.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: "app-login",
@@ -12,12 +15,14 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
     private authService: AuthServiceService,
-    private router: Router
+    private router: Router,
+    private tokenStorageService: TokenStorageServiceService,
+    private userService: UserServiceService
   ) { }
 
   ngOnInit() {
     this.initForm();
-    localStorage.removeItem("token")
+    this.tokenStorageService.signOut();
   }
 
   initForm() {
@@ -31,7 +36,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid) {
       this.authService.login(this.loginForm.value).subscribe((result) => {
         if (result.success) {
+          this.tokenStorageService.saveToken(result.token);
+          this.userService.storeUser(result.user);
           console.log(result);
+
           switch (result.user.role) {
             case "admin":
               this.router.navigateByUrl("add-user");
@@ -42,7 +50,7 @@ export class LoginComponent implements OnInit {
             default:
               break;
           }
-          this.authService.storeToken(result.token);
+
         } else {
           alert(result.message);
           console.warn(result.message);

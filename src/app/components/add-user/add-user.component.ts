@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthServiceService } from '../services/auth-service.service';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-add-user',
@@ -11,7 +11,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class AddUserComponent implements OnInit {
   addUserForm: FormGroup;
 
-  constructor(private authService: AuthServiceService,
+  constructor(private userService: UserServiceService,
     private router: Router) { }
 
   ngOnInit() {
@@ -30,7 +30,7 @@ export class AddUserComponent implements OnInit {
 
   addUser() {
     if (this.addUserForm.valid) {
-      this.authService.addUser(this.addUserForm.value).subscribe((result) => {
+      this.userService.addUser(this.addUserForm.value).subscribe((result) => {
         if (result.success) {
           console.warn(result)
 

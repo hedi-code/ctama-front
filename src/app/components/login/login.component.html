@@ -1,0 +1,37 @@
+<div class="logo">
+  <div class="writing">
+    <p>Assurance CTAMA</p>
+    <p>Depuis 1912</p>
+  </div>
+  <img src="./../../assets/logo.png" alt="">
+</div>
+<div class="login">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" class="paper">
+    <img src="./../../assets/logo.png" alt="">
+    <h1>Accéder à votre compte <span>CTAMA</span></h1>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput placeholder="pat@example.com" formControlName="email">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Enter your email</mat-hint>
+
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input type="password" matInput placeholder="**********" formControlName="password">
+      <mat-icon matSuffix>password</mat-icon>
+      <mat-hint>Enter your password</mat-hint>
+
+    </mat-form-field>
+
+
+
+    <button mat-flat-button type="submit" color="primary">Se connecter</button>
+
+  </form>
+
+
+
+</div>

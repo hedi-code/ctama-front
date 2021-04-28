@@ -45,18 +45,18 @@ import {
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { LoginComponent } from "./login/login.component";
+import { LoginComponent } from "./components/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { AdminPageComponent } from "./admin-page/admin-page.component";
-import { JwtInterceptor } from "./helpers/jwt.interceptor";
-import { UserPageComponent } from './user-page/user-page.component';
-import { AddUserComponent } from './add-user/add-user.component';
+
+import { AddUserComponent } from './components/add-user/add-user.component';
 import { TokenInterceptor } from './interceptors/token-interceptor.interceptor';
-import { DeleteUserComponent } from './delete-user/delete-user.component';
-import { UpdateUserComponent } from './update-user/update-user.component';
+import { DeleteUserComponent } from './components/delete-user/delete-user.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AdminPageComponent, UserPageComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent],
+  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

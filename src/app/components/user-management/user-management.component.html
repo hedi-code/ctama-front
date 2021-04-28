@@ -1,0 +1,56 @@
+<div class="table-container">
+    <button mat-flat-button type="submit" color="primary">
+        <mat-icon matSuffix>add</mat-icon>
+
+        Ajouter
+    </button>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Filtrer les données</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="foulen ben foulen" #input>
+        <mat-icon matSuffix>search</mat-icon>
+
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="firstname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="lastname">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+            <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+            <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

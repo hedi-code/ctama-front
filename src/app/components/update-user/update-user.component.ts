@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { AuthServiceService } from '../services/auth-service.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-update-user',
@@ -10,7 +10,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 export class UpdateUserComponent implements OnInit {
   updateUserForm: FormGroup;
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit() {
     this.initForm();
@@ -28,7 +28,7 @@ export class UpdateUserComponent implements OnInit {
 
   updateUser() {
     if (this.updateUserForm.valid) {
-      this.authService.updateUser(this.updateUserForm.value).subscribe((result) => {
+      this.userService.updateUser(this.updateUserForm.value).subscribe((result) => {
         if (result.success) {
           console.warn(result)
 

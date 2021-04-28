@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
-import { AuthServiceService } from '../services/auth-service.service';
+import { UserServiceService } from 'src/app/services/user-service.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -10,7 +10,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 export class DeleteUserComponent implements OnInit {
   deleteUserForm: FormGroup;
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private userService: UserServiceService) { }
 
   ngOnInit() {
     this.initForm();
@@ -25,7 +25,7 @@ export class DeleteUserComponent implements OnInit {
   deleteUser() {
 
     if (this.deleteUserForm.valid) {
-      this.authService.deleteUser(this.deleteUserForm.value.id).subscribe((result) => {
+      this.userService.deleteUser(this.deleteUserForm.value.id).subscribe((result) => {
         if (result.success) {
           console.warn(result)
 
@@ -35,7 +35,7 @@ export class DeleteUserComponent implements OnInit {
     }
 
     /*
-    this.authService.getUsers().subscribe((result) => {
+    this.userService.getUsers().subscribe((result) => {
       if (result.success) {
         console.warn(result.data)
 
