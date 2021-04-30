@@ -4,24 +4,24 @@ mat-drawer-container {
 mat-drawer {
     background-color: rgb(54, 54, 54);
     color: white;
-    padding: 1.8em;
     img {
         margin-left: 50%;
         transform: translateX(-50%);
     }
 }
 
-li,
-a {
-    padding: 1.2em 0;
+li {
+    position: relative;
+    transition: 0.3s ease;
+    padding: 1.2em 1.8em;
     cursor: pointer;
 }
 nav {
     display: flex;
-    flex: 1 1;
     flex-direction: column;
     align-items: left;
     height: 100%;
+
     img {
         height: 130px;
         width: 130px;
@@ -34,4 +34,26 @@ mat-toolbar {
     height: 8vh !important;
     background-color: rgb(37, 37, 37) !important;
     color: white;
+}
+.navigation {
+    margin-bottom: 3em;
+    width: 100%;
+}
+li:hover {
+    color: #4682b4;
+}
+
+li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 0;
+    width: 3px;
+    border-left: 4px solid #4682b4;
+    transition: all ease-in-out 0.2s;
+}
+li:hover::before {
+    height: 80%;
 }

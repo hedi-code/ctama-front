@@ -1,9 +1,8 @@
-<form [formGroup]="deleteUserForm" (ngSubmit)="deleteUser()" class="paper">
-    <h1>ajouter utilisateur</h1>
-
-    <p>id</p>
-    <input type="number" formControlName="id" placeholder="ex : xxxxxxxxxxxx" />
-    <button type="submit" class="btn">delete</button>
-    <button mat-raised-button (click)="openDialog()">Pick one</button>
-
-</form>
+<h2 mat-dialog-title color="warn">Etes vous sure vous voulez supprimer cet décideur ?</h2>
+<mat-dialog-content>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-flat-button (click)="deleteUser(data.id)" [mat-dialog-close]="true" type="submit" color="warn"
+        cdkFocusInitial>Supprimer</button>
+    <button mat-button mat-dialog-close>Annuler</button>
+</mat-dialog-actions>

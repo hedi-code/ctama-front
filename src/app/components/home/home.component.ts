@@ -11,6 +11,7 @@ import { TokenStorageServiceService } from 'src/app/services/token-storage-servi
 })
 export class HomeComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
+
   constructor(private tokenStorageService: TokenStorageServiceService, private router: Router) { }
 
   ngOnInit() {

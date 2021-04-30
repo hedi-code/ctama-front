@@ -27,10 +27,6 @@ export class UserServiceService {
     return this.http.get(`${baseUrl}users`);
   }
   storeUser(data) {
-    localStorage.setItem("firstname", data.firstname);
-    localStorage.setItem("lastname", data.lastname);
-    localStorage.setItem("email", data.email);
-    localStorage.setItem("role", data.role);
-
+    localStorage.setItem("id", data.id);
   }
 }

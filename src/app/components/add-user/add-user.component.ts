@@ -38,6 +38,7 @@ export class AddUserComponent implements OnInit {
           alert("error" + result.message)
       })
     }
+    window.location.reload();
   }
 
 }
