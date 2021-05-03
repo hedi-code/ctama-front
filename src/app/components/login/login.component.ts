@@ -40,16 +40,8 @@ export class LoginComponent implements OnInit {
           this.userService.storeUser(result.user);
           console.log(result);
 
-          switch (result.user.role) {
-            case "admin":
-              this.router.navigateByUrl("add-user");
-              break;
-            case "user":
-              this.router.navigateByUrl("add-user");
-              break;
-            default:
-              break;
-          }
+          this.router.navigateByUrl("admin");
+
 
         } else {
           alert(result.message);

@@ -4,9 +4,11 @@
 
         <nav>
             <img src="./../../assets/logo.png" alt="">
+            <mat-divider></mat-divider>
+
             <div class="navigation">
                 <ul>
-                    <li routerLink="/add-user">
+                    <li routerLink="/admin" *ngIf="user.role=='admin'">
                         Ajouter Utilisateurs
                     </li>
                     <li routerLink="/delete-user">
@@ -29,10 +31,7 @@
 
     <mat-drawer-content>
         <mat-toolbar *ngIf="isLoggedIn$ | async" color="primary">
-            <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
-                <mat-icon>menu</mat-icon>
-            </button>
-            <span>My App</span>
+            <span>Connecté en tant que {{user.firstname}} {{user.lastname}}</span>
             <span class="example-spacer"></span>
             <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
                 <mat-icon>account_circle</mat-icon>

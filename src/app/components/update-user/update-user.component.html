@@ -1,20 +1,49 @@
-<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" class="paper">
-    <h1>ajouter utilisateur</h1>
+<h2 mat-dialog-title>Modifer l'utilisateur {{currentUserValues.firstname}} {{currentUserValues.lastname}} </h2>
 
-    <p>first_name</p>
-    <input type="text" formControlName="first_name" placeholder="email@gmail.com" />
-    <p>last_name</p>
-    <input type="text" formControlName="last_name" placeholder="email@gmail.com" />
-    <p>Email</p>
-    <input type="text" formControlName="email" placeholder="email@gmail.com" />
-    <p>Role</p>
-    <select formControlName="role">
-        <option value="admin">admin</option>
-        <option value="user">user</option>
-    </select>
-    <p>Password</p>
-    <input type="password" formControlName="password" placeholder="ex : xxxxxxxxxxxx" />
-    <p>Id</p>
-    <input type="number" formControlName="id" placeholder="id" />
-    <button type="submit" class="btn">add</button>
+<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" class="paper">
+    <mat-dialog-content>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input type="text" matInput placeholder="Ben foulen" formControlName="last_name">
+            <mat-icon matSuffix>input</mat-icon>
+            <mat-hint>ancienne valeur : {{currentUserValues.lastname}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+            <input type="text" matInput placeholder="Foulen" formControlName="first_name">
+            <mat-icon matSuffix>input</mat-icon>
+            <mat-hint>ancienne valeur : {{currentUserValues.firstname}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="email@ctama.com" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint>ancienne valeur : {{currentUserValues.email}}</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Role</mat-label>
+            <mat-select formControlName="role">
+                <mat-option value="" disabled selected hidden>Choisir le role
+                </mat-option>
+                <mat-option value="admin">admin</mat-option>
+                <mat-option value="user">user</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>portrait</mat-icon>
+            <mat-hint>ancienne valeur : {{currentUserValues.role}}</mat-hint>
+        </mat-form-field>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+
+        <button type="submit" mat-flat-button color="primary" cdkFocusInitial [disabled]="!updateUserForm.valid"
+            [mat-dialog-close]="!updateUserForm.valid">Modifier</button>
+
+
+        <button mat-button mat-dialog-close>Annuler</button>
+    </mat-dialog-actions>
 </form>

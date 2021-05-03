@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
+import { MatSnackBar } from '@angular/material';
+import { SnackbarServiceService } from 'src/app/services/snackbar-service.service';
 
 @Component({
   selector: 'app-add-user',
@@ -12,7 +14,7 @@ export class AddUserComponent implements OnInit {
   addUserForm: FormGroup;
 
   constructor(private userService: UserServiceService,
-    private router: Router) { }
+    private router: Router, private snackbarService: SnackbarServiceService) { }
 
   ngOnInit() {
     this.initForm();
@@ -33,12 +35,11 @@ export class AddUserComponent implements OnInit {
       this.userService.addUser(this.addUserForm.value).subscribe((result) => {
         if (result.success) {
           console.warn(result)
-
+          this.snackbarService.openSnackBar("Ajouté avec succées", "Fermer", 3)
         } else
           alert("error" + result.message)
       })
     }
-    window.location.reload();
   }
 
 }

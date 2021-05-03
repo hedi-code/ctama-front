@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UserServiceService } from 'src/app/services/user-service.service';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { SnackbarServiceService } from 'src/app/services/snackbar-service.service';
 
 @Component({
   selector: 'app-delete-user',
@@ -11,9 +12,10 @@ import { MAT_DIALOG_DATA } from '@angular/material';
 export class DeleteUserComponent implements OnInit {
   deleteUserForm: FormGroup;
 
-  constructor(private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public data: number) { }
+  constructor(private userService: UserServiceService, @Inject(MAT_DIALOG_DATA) public data: number, private snackbarService: SnackbarServiceService) { }
 
   ngOnInit() {
+
   }
 
   deleteUser(id) {
@@ -21,11 +23,11 @@ export class DeleteUserComponent implements OnInit {
     this.userService.deleteUser(id).subscribe((result) => {
       if (result.success) {
         console.warn(result)
+        this.snackbarService.openSnackBar("Supprimé avec succées", "Fermer", 3)
 
       } else
         alert("error" + result.message)
     })
-    window.location.reload();
   }
 
   /*
