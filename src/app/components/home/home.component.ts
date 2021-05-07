@@ -17,14 +17,14 @@ export class HomeComponent implements OnInit {
   constructor(private tokenStorageService: TokenStorageServiceService, private router: Router, private userService: UserServiceService) { }
 
   ngOnInit() {
-    this.isLoggedIn$ = this.tokenStorageService.isLoggedIn;
-    this.userService.getUser(localStorage.getItem("id")).subscribe(result => {
-      console.log(result)
-      this.user.firstname = result.data.firstname
-      this.user.lastname = result.data.lastname;
-      console.log(this.user.firstname)
 
-    })
+    this.isLoggedIn$ = this.tokenStorageService.isLoggedIn;
+    if (this.userService.getCurrentUser())
+      this.user.lastname = this.userService.getCurrentUser().lastname;
+    this.user.role = this.userService.getCurrentUser().role;
+
+
+
 
 
 

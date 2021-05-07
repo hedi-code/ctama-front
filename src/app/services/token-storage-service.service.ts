@@ -27,11 +27,7 @@ export class TokenStorageServiceService {
 
   signOut() {
     localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem("firstname");
-    localStorage.removeItem("lastname");
-    localStorage.removeItem("email");
-    localStorage.removeItem("role");
-
+    localStorage.removeItem("currentUser");
     this.loggedIn.next(false);
 
   }

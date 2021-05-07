@@ -27,8 +27,8 @@ export class UserServiceService {
   getUsers(): Observable<any> {
     return this.http.get(`${baseUrl}users`);
   }
-  storeUser(data) {
-    localStorage.setItem("id", data.id);
+  getCurrentUser(): any {
+    return JSON.parse(localStorage.getItem("currentUser")).user;
   }
 
 

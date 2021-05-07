@@ -24,6 +24,12 @@ export class UserManagementComponent implements OnInit {
   ngOnInit() {
     // this.getAllUsers();
     this.getData()
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
+    } else {
+      localStorage.removeItem('foo')
+    }
   }
 
   getData() {
