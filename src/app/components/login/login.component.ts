@@ -21,6 +21,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!localStorage.getItem('foo')) {
+      localStorage.setItem('foo', 'no reload')
+      location.reload()
+    } else {
+      localStorage.removeItem('foo')
+    }
     this.initForm();
     this.tokenStorageService.signOut();
   }
