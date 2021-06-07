@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     console.log(this.userService.getCurrentUser())
 
     this.isLoggedIn$ = this.tokenStorageService.isLoggedIn;
-    this.user.lastname = this.userService.getCurrentUser().lastname;
+    this.user.lastname = this.userService.getCurrentUser().last_name;
     this.user.role = this.userService.getCurrentUser().role;
 
 
