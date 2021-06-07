@@ -27,8 +27,13 @@ export class UserServiceService {
   getUsers(): Observable<any> {
     return this.http.get(`${baseUrl}users`);
   }
+  updateUserPassword(data): Observable<any> {
+    return this.http.patch(`${baseUrl}users/pass`, data);
+
+
+  }
   getCurrentUser(): any {
-    return JSON.parse(localStorage.getItem("currentUser"));
+    return JSON.parse(localStorage.getItem("currentUser")).user;
   }
   updateStoredUser(user) {
     localStorage.removeItem('currentUser')

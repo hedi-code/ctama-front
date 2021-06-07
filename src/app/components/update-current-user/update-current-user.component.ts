@@ -13,13 +13,20 @@ import { SnackbarServiceService } from 'src/app/services/snackbar-service.servic
 export class UpdateCurrentUserComponent implements OnInit {
 
   currentUserValues: User = new User();
-  currentUserRole = JSON.parse(localStorage.getItem("currentUser")).role;
+  currentUserRole = this.userService.getCurrentUser().role;
   updateUserForm: FormGroup = new FormGroup({
     last_name: new FormControl(""),
     first_name: new FormControl(""),
     email: new FormControl(""),
     id: new FormControl("")
   });
+  updateUserFormPassword: FormGroup = new FormGroup({
+    id: new FormControl(""),
+    oldPassword: new FormControl(""),
+    password: new FormControl(""),
+    passwordConfirmation: new FormControl("")
+
+  })
   constructor(private userService: UserServiceService, private snackbarService: SnackbarServiceService) {
     this.userService.getUser(userService.getCurrentUser().id).subscribe(result => {
       console.warn(result)
@@ -64,5 +71,15 @@ export class UpdateCurrentUserComponent implements OnInit {
       })
     }
   }
-
+  updateUserPassword() {
+    this.updateUserFormPassword.value.id = this.userService.getCurrentUser().id;
+    this.userService.updateUserPassword(this.updateUserFormPassword.value).subscribe((result) => {
+      if (result.success) {
+        console.warn(result)
+        this.snackbarService.openSnackBar("Modifié avec succées", "Fermer", 3)
+      }
+      else
+        alert("error" + result.message)
+    })
+  }
 }
