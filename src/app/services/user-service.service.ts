@@ -28,7 +28,7 @@ export class UserServiceService {
     return this.http.get(`${baseUrl}users`);
   }
   getCurrentUser(): any {
-    return JSON.parse(localStorage.getItem("currentUser")).user;
+    return JSON.parse(localStorage.getItem("currentUser"));
   }
   updateStoredUser(user) {
     localStorage.removeItem('currentUser')
