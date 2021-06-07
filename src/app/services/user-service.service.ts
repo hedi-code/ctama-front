@@ -30,7 +30,11 @@ export class UserServiceService {
   getCurrentUser(): any {
     return JSON.parse(localStorage.getItem("currentUser")).user;
   }
+  updateStoredUser(user) {
+    localStorage.removeItem('currentUser')
+    localStorage.setItem('currentUser', JSON.stringify(user));
 
+  }
 
 
 }

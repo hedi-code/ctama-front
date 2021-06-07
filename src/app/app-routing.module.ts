@@ -1,10 +1,11 @@
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./components/login/login.component";
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { DeleteUserComponent } from './components/delete-user/delete-user.component';
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UpdateCurrentUserComponent } from './components/update-current-user/update-current-user.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,10 @@ const routes: Routes = [
     path: "update-user",
     component: UpdateUserComponent,
   },
+  {
+    path: "update-current-user",
+    component: UpdateCurrentUserComponent
+  }
 ];
 
 @NgModule({

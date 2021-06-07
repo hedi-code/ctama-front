@@ -54,9 +54,10 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { HomeComponent } from './components/home/home.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
+import { UpdateCurrentUserComponent } from './components/update-current-user/update-current-user.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent],
+  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent, UpdateCurrentUserComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

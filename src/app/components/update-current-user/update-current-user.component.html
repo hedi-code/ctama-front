@@ -1,0 +1,56 @@
+<h2 mat-dialog-title>Modifer l'utilisateur {{currentUserValues.firstname}} {{currentUserValues.lastname}} </h2>
+
+<form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" class="paper">
+    <mat-dialog-content>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nom</mat-label>
+            <input type="text" matInput placeholder="Ben foulen" formControlName="last_name" name="last_name">
+            <mat-icon matSuffix>input</mat-icon>
+            <mat-hint
+                *ngIf="!(updateUserForm.controls['last_name'].invalid && (updateUserForm.controls['last_name'].dirty || updateUserForm.controls['last_name'].touched) && updateUserForm.controls['last_name'].errors.minlength)">
+                ancienne valeur :
+                {{currentUserValues.lastname}}</mat-hint>
+            <mat-hint
+                *ngIf="updateUserForm.controls['last_name'].invalid && (updateUserForm.controls['last_name'].dirty || updateUserForm.controls['last_name'].touched) && updateUserForm.controls['last_name'].errors.minlength"
+                style="color:red">
+                taille
+            </mat-hint>
+
+            <!--            <mat-hint
+                *ngIf="updateUserForm.controls['last_name'].invalid && (updateUserForm.controls['last_name'].dirty || updateUserForm.controls['last_name'].touched) && updateUserForm.controls['last_name'].errors.required"
+                style="color:red">
+                obligatoire
+            </mat-hint>-->
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Prénom</mat-label>
+            <input type="text" matInput placeholder="Foulen" formControlName="first_name">
+            <mat-icon matSuffix>input</mat-icon>
+            <mat-hint *ngIf="!this.f.first_name.errors">ancienne valeur : {{currentUserValues.firstname}}</mat-hint>
+            <mat-hint *ngIf="this.f.first_name.errors" style="color:red">le prenom est obligaoire</mat-hint>
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" *ngIf="currentUserRole">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput placeholder="email@ctama.com" formControlName="email">
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-hint *ngIf="!this.f.email.errors">ancienne valeur : {{currentUserValues.email}}</mat-hint>
+            <mat-hint *ngIf="this.f.email.errors" style="color:red">email est obligaoire</mat-hint>
+
+        </mat-form-field>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+
+        <button type="submit" mat-flat-button color="primary" cdkFocusInitial [disabled]="!updateUserForm.valid"
+            [mat-dialog-close]="!updateUserForm.valid">Modifier</button>
+
+
+        <button mat-button mat-dialog-close>Annuler</button>
+    </mat-dialog-actions>
+</form>
