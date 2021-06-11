@@ -9,3 +9,14 @@
         margin-top: 1em;
     }
 }
+mat-icon{
+    cursor: pointer;
+    margin: 0 .2em;
+    &:first-child:hover{
+        color: #FF9933;
+    }
+    &:nth-child(2):hover{
+        color: red;
+    }
+
+}
