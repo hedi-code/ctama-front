@@ -1,14 +1,14 @@
 <div class="table-container">
     <button mat-flat-button type="submit" color="primary" (click)="openAddDialog()">
-        <mat-icon matSuffix>add</mat-icon>
+        <mat-icon matSuffix>add </mat-icon>
 
         Ajouter
     </button>
 
     <mat-form-field appearance="outline">
         <mat-label>Filtrer les données</mat-label>
-        <input matInput (keyup)="applyFilter($event)" placeholder="foulen ben foulen" #input>
-        <mat-icon matSuffix>search</mat-icon>
+        <input matInput (keyup)="applyFilter($event)" placeholder="foulen ben foulen " #input>
+        <mat-icon matSuffix>search </mat-icon>
 
     </mat-form-field>
 
@@ -19,39 +19,47 @@
 
         <!-- Position Column -->
         <ng-container matColumnDef="id">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
 
         <!-- Name Column -->
         <ng-container matColumnDef="firstname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom </th>
             <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="lastname">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
             <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="email">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
             <td mat-cell *matCellDef="let element"> {{element.email}} </td>
         </ng-container>
 
         <!-- Symbol Column -->
         <ng-container matColumnDef="role">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Role </th>
             <td mat-cell *matCellDef="let element"> {{element.role}} </td>
         </ng-container>
 
         <ng-container matColumnDef="action">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
+            <th mat-header-cell *matHeaderCellDef> Action </th>
             <td mat-cell *matCellDef="let element">
-                <mat-icon (click)="openUpdateDialog(element.id)">create</mat-icon>
-                <mat-icon (click)="openDeleteDialog(element.id)">delete_sweep</mat-icon>
+                <div *ngIf="element.id!=currentUserId && element.role!='admin'">
+                    <mat-icon (click)="openUpdateDialog(element.id)">create</mat-icon>
+                    <mat-icon (click)="openDeleteDialog(element.id)">delete_sweep</mat-icon>
+                </div>
+                <div *ngIf="element.id==currentUserId">
+                    Pas d'action pour l'admin connecté
+                </div>
+                <div *ngIf="element.role=='admin' && element.id!=currentUserId">
+                    Pas d'action pour les autres admins
+                </div>
             </td>
         </ng-container>
 

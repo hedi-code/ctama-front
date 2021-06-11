@@ -44,8 +44,12 @@ export class LoginComponent implements OnInit {
         if (result.success) {
           this.tokenStorageService.saveToken(result.token);
           console.log(result);
+          if (result.user.role != 'user')
+            this.router.navigateByUrl("admin");
+          else
+            this.router.navigateByUrl("chiffre");
 
-          this.router.navigateByUrl("admin");
+
 
 
         } else {

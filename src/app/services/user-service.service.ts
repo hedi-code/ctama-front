@@ -3,6 +3,7 @@ import { baseUrl } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { User } from '../model/User';
+import { TokenStorageServiceService } from './token-storage-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { User } from '../model/User';
 export class UserServiceService {
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private tokenStorageService: TokenStorageServiceService) { }
 
   addUser(data): Observable<any> {
     return this.http.post(`${baseUrl}users`, data);
@@ -37,7 +38,7 @@ export class UserServiceService {
   }
   updateStoredUser(user) {
     localStorage.removeItem('currentUser')
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('currentUser', '{"success":1,"message":"login successfully","token":"' + this.tokenStorageService.getToken() + '","user":' + JSON.stringify(user) + '}');
 
   }
 

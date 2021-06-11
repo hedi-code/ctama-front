@@ -55,9 +55,10 @@ import { UpdateUserComponent } from './components/update-user/update-user.compon
 import { HomeComponent } from './components/home/home.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UpdateCurrentUserComponent } from './components/update-current-user/update-current-user.component';
+import { ChiffreAffaireComponent } from './components/chiffre-affaire/chiffre-affaire.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent, UpdateCurrentUserComponent],
+  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent, UpdateCurrentUserComponent, ChiffreAffaireComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

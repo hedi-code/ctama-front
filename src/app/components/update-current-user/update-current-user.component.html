@@ -1,5 +1,37 @@
 <h2 mat-dialog-title>Modifer l'utilisateur {{currentUserValues.firstname}} {{currentUserValues.lastname}} </h2>
 <mat-tab-group>
+    <mat-tab label="Mes données">
+        <div class="example-large-box mat-elevation-z4">
+            <mat-dialog-content>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mon nom</mat-label>
+                    <input type="text" matInput value="{{currentUserValues.lastname}}" disabled>
+                    <mat-icon matSuffix>input</mat-icon>
+
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mon Prénom</mat-label>
+                    <input type="text" matInput value="{{currentUserValues.firstname}}" disabled>
+                    <mat-icon matSuffix>input</mat-icon>
+
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Mon Email</mat-label>
+                    <input type="email" matInput value="{{currentUserValues.email}}" disabled>
+                    <mat-icon matSuffix>email</mat-icon>
+
+                </mat-form-field>
+
+
+            </mat-dialog-content>
+
+        </div>
+
+    </mat-tab>
     <mat-tab label="Modifer données">
         <div class="example-large-box mat-elevation-z4">
             <form [formGroup]="updateUserForm" (ngSubmit)="updateUser()" class="paper">
@@ -61,46 +93,69 @@
         </div>
 
     </mat-tab>
-    <mat-tab label="Modifer mot de">
-        <form [formGroup]="updateUserPasswordForm" (ngSubmit)="updateUserPassword()" class="paper">
+
+
+
+
+
+    <mat-tab label="Modifer mot de passe">
+        <form [formGroup]="updateUserFormPassword" (ngSubmit)="updateUserPassword()" class="paper">
             <mat-dialog-content>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Ancien mot de passe</mat-label>
                     <input type="password" matInput placeholder="Ben foulen" formControlName="oldPassword"
-                        name="last_name">
-                    <mat-icon matSuffix>input</mat-icon>
-
-
-                    <!--            <mat-hint
-                    *ngIf="updateUserForm.controls['last_name'].invalid && (updateUserForm.controls['last_name'].dirty || updateUserForm.controls['last_name'].touched) && updateUserForm.controls['last_name'].errors.required"
-                    style="color:red">
-                    obligatoire
-                </mat-hint>-->
-
+                        name="oldPassword">
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint
+                        *ngIf="updateUserFormPassword.controls['oldPassword'].invalid && (updateUserFormPassword.controls['oldPassword'].dirty || updateUserFormPassword.controls['oldPassword'].touched) && updateUserFormPassword.controls['oldPassword'].errors.minlength"
+                        style="color:red">
+                        taille
+                    </mat-hint>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline">
                     <mat-label>Nouveau mot de passe</mat-label>
                     <input type="password" matInput placeholder="Foulen" formControlName="password">
-                    <mat-icon matSuffix>input</mat-icon>
-
+                    <mat-icon matSuffix>password</mat-icon>
+                    <mat-hint
+                        *ngIf="updateUserFormPassword.controls['password'].invalid && (updateUserFormPassword.controls['password'].dirty || updateUserFormPassword.controls['password'].touched) && updateUserFormPassword.controls['password'].errors.minlength"
+                        style="color:red">
+                        taille
+                    </mat-hint>
+                    <mat-hint
+                        *ngIf="(updateUserFormPassword.controls['password'].dirty || updateUserFormPassword.controls['password'].touched) && updateUserFormPassword.value.passwordConfirmation!=updateUserFormPassword.value.password"
+                        style="color:red">
+                        verifier le mot de passe et la confirmation
+                    </mat-hint>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" *ngIf="currentUserRole">
+                <mat-form-field appearance="outline">
                     <mat-label>Confirmer le nouveau mot de passe</mat-label>
                     <input type="password" matInput placeholder="email@ctama.com"
                         formControlName="passwordConfirmation">
+                    <mat-hint
+                        *ngIf="updateUserFormPassword.controls['passwordConfirmation'].invalid && (updateUserFormPassword.controls['passwordConfirmation'].dirty || updateUserFormPassword.controls['passwordConfirmation'].touched) && updateUserFormPassword.controls['passwordConfirmation'].errors.minlength"
+                        style="color:red">
+                        taille
+                    </mat-hint>
+                    <mat-hint
+                        *ngIf="(updateUserFormPassword.controls['passwordConfirmation'].dirty || updateUserFormPassword.controls['passwordConfirmation'].touched) && updateUserFormPassword.value.passwordConfirmation!=updateUserFormPassword.value.password"
+                        style="color:red">
+                        verifier le mot de passe et la confirmation
+                    </mat-hint>
+                    <mat-icon matSuffix>password</mat-icon>
 
                 </mat-form-field>
 
-                <button type="submit" mat-flat-button color="primary" cdkFocusInitial
-                    [mat-dialog-close]="!updateUserForm.valid">modifier pass</button>
+
 
             </mat-dialog-content>
             <mat-dialog-actions align="center">
 
-
+                <button type="submit" mat-flat-button color="primary" (click)="updateUserPassword()"
+                    [disabled]="!updateUserFormPassword.valid" [mat-dialog-close]="!updateUserFormPassword.valid"
+                    cdkFocusInitial>modifier pass</button>
 
                 <button mat-button mat-dialog-close>Annuler</button>
             </mat-dialog-actions>

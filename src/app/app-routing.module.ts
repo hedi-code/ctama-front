@@ -6,6 +6,9 @@ import { DeleteUserComponent } from './components/delete-user/delete-user.compon
 import { UpdateUserComponent } from './components/update-user/update-user.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UpdateCurrentUserComponent } from './components/update-current-user/update-current-user.component';
+import { AuthGuardService } from './services/auth-guard.service';
+import { RoleGuardService } from './services/role-guard.service';
+import { ChiffreAffaireComponent } from './components/chiffre-affaire/chiffre-affaire.component';
 
 const routes: Routes = [
   {
@@ -15,23 +18,39 @@ const routes: Routes = [
   {
     path: "admin",
     component: UserManagementComponent,
+    canActivate: [RoleGuardService],
+
   },
 
   {
     path: "add-user",
     component: AddUserComponent,
+    canActivate: [RoleGuardService],
+
   },
   {
     path: "delete-user",
     component: DeleteUserComponent,
+    canActivate: [RoleGuardService],
+
   },
   {
     path: "update-user",
     component: UpdateUserComponent,
+    canActivate: [RoleGuardService],
+
   },
   {
     path: "update-current-user",
-    component: UpdateCurrentUserComponent
+    component: UpdateCurrentUserComponent,
+    canActivate: [AuthGuardService],
+
+  },
+  {
+    path: "chiffre",
+    component: ChiffreAffaireComponent,
+    canActivate: [AuthGuardService],
+
   }
 ];
 

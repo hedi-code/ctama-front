@@ -17,12 +17,14 @@ export class UserManagementComponent implements OnInit {
   users: User[] = [];
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-
+  currentUserId;
   constructor(private userService: UserServiceService, public dialog: MatDialog, private changeDetectorRefs: ChangeDetectorRef) {
   }
 
   ngOnInit() {
     // this.getAllUsers();
+    this.currentUserId = this.userService.getCurrentUser().id;
+    console.warn(this.currentUserId + "aaaa")
     this.getData()
     if (!localStorage.getItem('foo')) {
       localStorage.setItem('foo', 'no reload')
@@ -36,7 +38,6 @@ export class UserManagementComponent implements OnInit {
     this.userService.getUsers().subscribe(results => {
       console.log(results);
       this.users = results.data;
-
       this.dataSource = new MatTableDataSource<User>(this.users)
       this.changeDetectorRefs.detectChanges()
 

@@ -30,9 +30,10 @@ export class UpdateCurrentUserComponent implements OnInit {
   constructor(private userService: UserServiceService, private snackbarService: SnackbarServiceService) {
     this.userService.getUser(userService.getCurrentUser().id).subscribe(result => {
       console.warn(result)
-      this.currentUserValues.lastname = result.data.lastname;
-      this.currentUserValues.firstname = result.data.firstname;
-      this.currentUserValues.email = result.data.email;
+      this.currentUserValues.firstname = userService.getCurrentUser().firstname || userService.getCurrentUser().first_name;
+      this.currentUserValues.lastname = userService.getCurrentUser().lastname || userService.getCurrentUser().last_name;
+      this.currentUserValues.email = userService.getCurrentUser().email;
+
 
       this.updateUserForm = new FormGroup({
         last_name: new FormControl(result.data.lastname, [Validators.required, Validators.minLength(5)]),
@@ -41,6 +42,13 @@ export class UpdateCurrentUserComponent implements OnInit {
         role: new FormControl(result.data.role, [Validators.required]),
         id: new FormControl("")
       });
+      this.updateUserFormPassword = new FormGroup({
+        id: new FormControl(""),
+        oldPassword: new FormControl("", [Validators.required, Validators.minLength(5)]),
+        password: new FormControl("", [Validators.required, Validators.minLength(5)]),
+        passwordConfirmation: new FormControl("", [Validators.required, Validators.minLength(5)])
+
+      })
 
 
       console.log(this.currentUserValues.lastname + "aaaaaaaaaaaa")
@@ -76,10 +84,10 @@ export class UpdateCurrentUserComponent implements OnInit {
     this.userService.updateUserPassword(this.updateUserFormPassword.value).subscribe((result) => {
       if (result.success) {
         console.warn(result)
-        this.snackbarService.openSnackBar("Modifié avec succées", "Fermer", 3)
+        this.snackbarService.openSnackBar("Mt de passemodifié avec succées", "Fermer", 3)
       }
       else
-        alert("error" + result.message)
+        alert(result.message)
     })
   }
 }
