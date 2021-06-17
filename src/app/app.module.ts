@@ -56,9 +56,12 @@ import { HomeComponent } from './components/home/home.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
 import { UpdateCurrentUserComponent } from './components/update-current-user/update-current-user.component';
 import { ChiffreAffaireComponent } from './components/chiffre-affaire/chiffre-affaire.component';
+import { EncaissementComponent } from './encaissement/encaissement.component';
+import { SinstreComponent } from './sinstre/sinstre.component';
+import { CeanceComponent } from './ceance/ceance.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent, UpdateCurrentUserComponent, ChiffreAffaireComponent],
+  declarations: [AppComponent, LoginComponent, AddUserComponent, DeleteUserComponent, UpdateUserComponent, HomeComponent, UserManagementComponent, UpdateCurrentUserComponent, ChiffreAffaireComponent, EncaissementComponent, SinstreComponent, CeanceComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -9,6 +9,9 @@ import { UpdateCurrentUserComponent } from './components/update-current-user/upd
 import { AuthGuardService } from './services/auth-guard.service';
 import { RoleGuardService } from './services/role-guard.service';
 import { ChiffreAffaireComponent } from './components/chiffre-affaire/chiffre-affaire.component';
+import { EncaissementComponent } from "./encaissement/encaissement.component";
+import { SinstreComponent } from "./sinstre/sinstre.component";
+import { CeanceComponent } from "./ceance/ceance.component";
 
 const routes: Routes = [
   {
@@ -49,6 +52,24 @@ const routes: Routes = [
   {
     path: "chiffre",
     component: ChiffreAffaireComponent,
+    canActivate: [AuthGuardService],
+
+  },
+  {
+    path: "encaissement",
+    component: EncaissementComponent,
+    canActivate: [AuthGuardService],
+
+  },
+  {
+    path: "sinistre",
+    component: SinstreComponent,
+    canActivate: [AuthGuardService],
+
+  },
+  {
+    path: "creance",
+    component: CeanceComponent,
     canActivate: [AuthGuardService],
 
   }

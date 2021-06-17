@@ -11,16 +11,16 @@
                     <li routerLink="/admin" *ngIf="user.role=='admin'">
                         Gestion Utilisateurs
                     </li>
-                    <li routerLink="/admin">
+                    <li routerLink="/chiffre">
                         Chiffre d'affaire
                     </li>
-                    <li routerLink="/admin">
-                        Encaissment
+                    <li routerLink="/encaissement">
+                        Encaissement
                     </li>
-                    <li routerLink="/admin">
+                    <li routerLink="/creance">
                         Créance
                     </li>
-                    <li routerLink="/admin">
+                    <li routerLink="/sinistre">
                         Sinistre
                     </li>
                 </ul>
@@ -45,3 +45,13 @@
     </mat-drawer-content>
 
 </mat-drawer-container>
+<script>
+    nav = document.getElementsByTagName("li");
+    for(var i =0;i<nav.length;i++){
+        nav[i].addEventListener("click", function() {
+  var current = document.getElementsByClassName("active");
+  current[0].className = current[0].className.replace(" active", "");
+  this.className += " active";
+  });
+    }
+</script>
