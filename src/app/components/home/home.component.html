@@ -8,7 +8,7 @@
 
             <div class="navigation">
                 <ul>
-                    <li routerLink="/admin" *ngIf="user.role=='admin'">
+                    <li  routerLink="/admin" *ngIf="user.role=='admin'">
                         Gestion Utilisateurs
                     </li>
                     <li routerLink="/chiffre">
@@ -50,8 +50,7 @@
     for(var i =0;i<nav.length;i++){
         nav[i].addEventListener("click", function() {
   var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
+  current[0].classList.toggle('active');
   });
     }
 </script>
